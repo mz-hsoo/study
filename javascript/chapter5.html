@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #add-btn {
+        padding:5px 10px;
+        border:0;
+        background: #f80;
+        color:#fff;
+        border-radius:5px;
+    }
+    ul {
+        padding:0;
+        list-style-position:inside;
+    }
+    li {
+        border-bottom:1px solid #999;
+        padding:5px 0;
+    }
+    .active {
+        background: #abc;
+    }
+</style>
+<body>
+    <h2 id="title">할 일 목록</h2>
+    <button id="add-btn">목록추가</button>
+
+    <ul id="list">
+        <li>제목1</li>
+        <li>제목2</li>
+        <li>제목3</li>
+        <li>제목4</li>
+    </ul>
+</body>
+</html>
+<script>
+
+// ------5-1 구구단예제------------
+
+
+    // var num = prompt('구구단 몇 단을 볼까요?');
+    // if(num == '' || isNaN(num) ){
+    //     alert('숫자를 입력하세요');
+    //     num = prompt('구구단 몇 단을 볼까요?');
+    // } else{
+    //     for(var i=1; i<10; i++){
+    //         document.write(num + 'x' + i + '=' + num*i + '<br>');
+    //     }
+    // }
+
+//----5.1.3연습문제---------------------------
+
+    // var num1 = prompt('첫 번째 숫자');
+    // var num2 = prompt('두 번째 숫자');
+    // document.write(Number(num1)+Number(num2));
+
+
+//----5.2-------------------------------------
+    //변수
+    var title = document.getElementById('title');
+    var list = document.getElementById('list');
+    var li = list.getElementsByTagName('li');
+    var addBtn = document.getElementById('add-btn');
+
+
+    list.addEventListener('click',activeItem);
+
+    // for( var i=0; i<li.length; i++ ){
+    //     li[i].addEventListener('click',activeItem);
+    // };
+
+    function activeItem(event){
+
+        if(event.target.nodeName == 'LI'){
+            //console.log('click');
+            title.innerHTML = event.target.innerText;
+
+            for( var i=0; i < event.target.parentNode.children.length; i++ ){
+                event.target.parentNode.children[i].removeAttribute('class');
+            }//for
+            event.target.setAttribute('class','active')
+        }//if
+
+
+         //title.innerHTML = this.innerText;
+
+        // for( var i=0; i<li.length; i++ ){
+        //     li[i].removeAttribute('class');
+        // }
+        // this.setAttribute('class','active');
+    };
+
+    //목록추가
+    addBtn.addEventListener('click',function(){
+        var txt = prompt('제목을 입력하세요');
+        list.innerHTML += '<li>'+ txt + '</li>';
+    });
+
+
+
+</script>
