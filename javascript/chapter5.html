@@ -61,45 +61,57 @@
 
 
 //----5.2-------------------------------------
-    //변수
-    var title = document.getElementById('title');
-    var list = document.getElementById('list');
-    var li = list.getElementsByTagName('li');
-    var addBtn = document.getElementById('add-btn');
-
-
-    list.addEventListener('click',activeItem);
-
-    // for( var i=0; i<li.length; i++ ){
-    //     li[i].addEventListener('click',activeItem);
+    // //변수
+    // var title = document.getElementById('title');
+    // var list = document.getElementById('list');
+    // var li = list.getElementsByTagName('li');
+    // var addBtn = document.getElementById('add-btn');
+    //
+    //
+    // list.addEventListener('click',activeItem);
+    //
+    // // for( var i=0; i<li.length; i++ ){
+    // //     li[i].addEventListener('click',activeItem);
+    // // };
+    //
+    // function activeItem(event){
+    //
+    //     if(event.target.nodeName == 'LI'){
+    //         //console.log('click');
+    //         title.innerHTML = event.target.innerText;
+    //
+    //         for( var i=0; i < event.target.parentNode.children.length; i++ ){
+    //             event.target.parentNode.children[i].removeAttribute('class');
+    //         }//for
+    //         event.target.setAttribute('class','active')
+    //     }//if
+    //
+    //
+    //      //title.innerHTML = this.innerText;
+    //
+    //     // for( var i=0; i<li.length; i++ ){
+    //     //     li[i].removeAttribute('class');
+    //     // }
+    //     // this.setAttribute('class','active');
     // };
-
-    function activeItem(event){
-
-        if(event.target.nodeName == 'LI'){
-            //console.log('click');
-            title.innerHTML = event.target.innerText;
-
-            for( var i=0; i < event.target.parentNode.children.length; i++ ){
-                event.target.parentNode.children[i].removeAttribute('class');
-            }//for
-            event.target.setAttribute('class','active')
-        }//if
+    //
+    // //목록추가
+    // addBtn.addEventListener('click',function(){
+    //     var txt = prompt('제목을 입력하세요');
+    //     list.innerHTML += '<li>'+ txt + '</li>';
+    // });
 
 
-         //title.innerHTML = this.innerText;
+//--5.2.5연습문제--------------------------------------
 
-        // for( var i=0; i<li.length; i++ ){
-        //     li[i].removeAttribute('class');
-        // }
-        // this.setAttribute('class','active');
-    };
+var ul = document.getElementById('list');
+var li = ul.getElementsByTagName('li');
+var firstText = li[0].innerHTML;
+var lastText = li[3].innerHTML;
 
-    //목록추가
-    addBtn.addEventListener('click',function(){
-        var txt = prompt('제목을 입력하세요');
-        list.innerHTML += '<li>'+ txt + '</li>';
-    });
+    li[0].innerHTML = lastText;
+    li[3].innerHTML = firstText;
+
 
 
 
