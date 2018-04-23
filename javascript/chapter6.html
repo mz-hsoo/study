@@ -47,27 +47,27 @@
       <th colspan="4"><input type="text" readonly name="result" value="0"></th>
     </tr>
     <tr>
-      <td><input class="num-btn" type="button" value="7"></td>
-      <td><input class="num-btn" type="button" value="8"></td>
-      <td><input class="num-btn" type="button" value="9"></td>
-      <td><input class="num-btn" type="button" value="+"></td>
+      <td><input type="button" value="7"></td>
+      <td><input type="button" value="8"></td>
+      <td><input type="button" value="9"></td>
+      <td><input type="button" value="+"></td>
     </tr>
     <tr>
-      <td><input class="num-btn" type="button" value="4"></td>
-      <td><input class="num-btn" type="button" value="5"></td>
-      <td><input class="num-btn" type="button" value="6"></td>
-      <td><input class="num-btn" type="button" value="-"></td>
+      <td><input type="button" value="4"></td>
+      <td><input type="button" value="5"></td>
+      <td><input type="button" value="6"></td>
+      <td><input type="button" value="-"></td>
     </tr>
     <tr>
-      <td><input class="num-btn" type="button" value="1"></td>
-      <td><input class="num-btn" type="button" value="2"></td>
-      <td><input class="num-btn" type="button" value="3"></td>
-      <td><input class="num-btn" type="button" value="*"></td>
+      <td><input type="button" value="1"></td>
+      <td><input type="button" value="2"></td>
+      <td><input type="button" value="3"></td>
+      <td><input type="button" value="*"></td>
     </tr>
     <tr>
-      <td colspan="2"><input class="num-btn" type="button" value="0"></td>
-      <td><input class="num-btn" type="button" value="%"></td>
-      <td><input class="num-btn" type="button" value="/"></td>
+      <td colspan="2"><input type="button" value="0"></td>
+      <td><input type="button" value="%"></td>
+      <td><input type="button" value="/"></td>
     </tr>
     <tr>
       <td colspan="2"><input type="button" class="cls_btn" value="clear" ></td>
@@ -76,60 +76,60 @@
   </table>
 </form>
 
+<script>
+
+  //변수선언
+  var form = document.forms['cal'];
+  var input = form.getElementsByTagName['input'];
+  var clsBtn = document.getElementsByClassName('cls_btn');
+  var resultBtn = document.getElementsByClassName('result_btn');
+  //var button = document.querySelector('num-btn');
+  
+  // button.onclick = function(){
+  //   calc(this.value);
+  // }
+  
+  //clear 초기화
+  function clear(){
+    form['result'].value = 0 ;
+  }
+  
+  // 계산처리
+  function calc(value){
+      if( form['result'].value == 0 ){
+          form['result'].value = "";
+      }
+  
+      form['result'].value += value;
+  };
+  
+  //결과처리
+  function resultValue(){
+    var result = ducoment.forms['cal']['result'];
+    var calc = eval(result.value);
+    input['result'].value = calc;
+  }
+  
+  
+  for(var i = 0; i <input.length; i++){
+    if(input[i].value != '=' && input[i].value != 'clear'){
+      input[i].onclick = function(){
+        calc(this.value);
+      }
+    } 
+  } 
+  
+  
+  clsBtn.onclick = function(){
+    clear();
+  }
+  
+  
+  resultBtn.onclick = function(){
+    resultValue();
+  }
+</script>
+
 </body>
 </html>
 
-<script>
-
-//변수선언
-var form = document.forms['cal'];
-var input = form.getElementsByTagName['input'];
-var clsBtn = document.getElementsByClassName('cls_btn');
-var resultBtn = document.getElementsByClassName('result_btn');
-var button = document.querySelector('num-btn');
-
-// button.onclick = function(){
-//   calc(this.value);
-// }
-
-
-//버튼
-for(var i = 0; i < input.length; i++){
-
-// 숫자와 사칙 연산자만 입력 처리
-  if(input[i].value != '=' && input[i].value !='clear'){
-    input[i].onclick = function(){
-      calc(this.value);
-    }
-  } // end if
-} 
-
-
-
-//계산기 처리
-function calc(value){
-    if( form['result'].value == 0 ){
-        form['result'].value = "";
-    }
-
-    form['result'].value += value;
-};
-
-//clear 초기화
-function clear(){
-  form['result'].value = 0 ;
-}
-clsBtn.onclick = function(){
-  clear();
-}
-
-//결과처리
-function resultValue(){
-  var result = ducoment.forms['cal']['result'];
-  var calc = eval(result.value);
-  input['result'].vlaue = calc;
-}
-resultBtn.onclick = function(){
-  resultValue();
-}
-</script>
