@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="list">
+        <img class="thumb" src="http://shop1.phinf.naver.net/20180406_20/kty1_1523026602487EKc6J_PNG/5657782140983780_739694795.png" width="100" />
+        <img class="thumb" src="http://shop1.phinf.naver.net/20180107_95/leeyg0344_15152509613481rsKR_PNG/280306_0.png" width="100"/>
+        <img class="thumb" src="http://shop1.phinf.naver.net/20180329_192/bridgemall_1522313760688W2h5f_PNG/45620940329452642_1381879138.png" width="100" />	
+    </div>
+    
+    <div id="dimmed"></div>
+    
+    <div id="lightbox">
+        <h1>이 표시는 뭘까요?</h1>
+
+        <figure>
+          <img src="http://shop1.phinf.naver.net/20180406_20/kty1_1523026602487EKc6J_PNG/5657782140983780_739694795.png" class="active" alt="" />
+          <img src="http://shop1.phinf.naver.net/20180107_95/leeyg0344_15152509613481rsKR_PNG/280306_0.png" alt="" />
+          <img src="http://shop1.phinf.naver.net/20180329_192/bridgemall_1522313760688W2h5f_PNG/45620940329452642_1381879138.png" alt="" />
+        </figure>
+    
+        <div class="indicator">
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+        </div>	
+        <div class="btn-close" onclick="lightbox_close()">X</div>
+    </div>
+</body>
+<script>
+    //변수
+    var $ind = $('.indicator button');
+    var $lightbox = $('#lightbox');
+    var $dim = $('#dimmed');
+    var $showItem = $('#lightbox , #dimmed');
+    var $img = $('figure img');
+    var $thumb = $('.thumb');
+    
+    //열기
+    function lightbox_open(num){
+        $showItem.addClass('active');
+        
+        $ind.click(function(){
+            boxImg();
+        });
+    }
+    //닫기
+    function lightbox_close(){
+        $showItem.removeClass('active');
+    }
+
+    //이미지 변경
+    function imgChange(){
+        var indNum = $(this).index();
+        lightbox_open(indNum);
+        $img.removeClass('active');
+        $img.eq(indNum).addClass('active');
+    }
+    
+    //누르는이미지가 열리게
+    function boxImg(){
+        var num = $(this).index();
+            $img.removeClass('active');
+            $img.eq(num).addClass('active');
+    }
+
+    $thumb.click(function(){
+        imgChange();
+    });
+
+</script>
+</html>
