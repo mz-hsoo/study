@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+  <title>구구단</title>
+</head>
+<body>
+  <div id="app">
+    <pre>
+      {{$data}}
+    </pre>
+    <h2>구구단퀴즈~</h2>
+    <p><span>{{ random1 }}</span> 곱하기 <span>{{ random2 }}</span>은?</p>
+    <form v-on:submit="submitForm">
+      <input type="number" v-model="userAnswer" ref="gugudanInput"> <button type="submit">입력</button>
+    </form>
+  </div>  
+  <script>
+      var app = new Vue({
+        el:'#app',
+        data:{
+          random1:null,
+          random2:null,
+          answer:null,
+          userAnswer:null
+        },
+        created(){
+          this.randomNumber()
+        },
+        methods:{
+          randomNumber(){
+            this.random1 = Math.floor(Math.random() * 10);
+            this.random2 = Math.floor(Math.random() * 10);
+            this.answer = this.random1 * this.random2;
+          },
+          submitForm(e){
+            e.preventDefault();
+
+            this.userAnswer = parseInt(this.userAnswer) //숫자로변환
+
+            if(this.answer === this.userAnswer ){
+              alert('정답!')
+              this.randomNumber();
+              this.userAnswer = null;
+              this.$refs.gugudanInput.focus();
+
+            } else {
+              alert('땡');
+              this.userAnswer = null;
+              this.$refs.gugudanInput.focus();
+            }
+          }
+        }
+      })
+    </script>
+</body>
+</html>
+

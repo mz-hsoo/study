@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+  <title>끝말잇기</title>
+</head>
+<body>
+  <div id="app">
+    <pre>{{ $data }}</pre>
+    <h1>끝말잇기를 해보자!</h1>
+    <p>{{ startWord }}</p>
+    <form v-on:submit="onSubmitForm">
+      <input type="text" v-model="value"> <button type="submit">입력</button>
+    </form>
+  </div>  
+  <script>
+      var app = new Vue({
+        el:'#app',
+        data:{
+          startWord:'이희수',
+          value:null,
+        },
+        methods:{
+          onSubmitForm(e){
+            e.preventDefault();
+            //console.log(this.startWord[this.startWord.length -1] , this.value[0])
+            if(this.startWord[this.startWord.length -1] === this.value[0]){
+              alert('정답~');
+              this.startWord = this.value;
+              this.value = null
+            } else {
+              alert('땡')
+              this.value = null
+            }
+          }
+        }
+      })
+    </script>
+</body>
+</html>
+
